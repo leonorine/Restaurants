@@ -1,0 +1,179 @@
+body {
+    background-color: beige;
+    color: #5e3f18;
+    font-family: "Andale Mono", sans-serif ;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 18px;
+}
+
+ul#suggestions {
+    margin-top: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+ul#suggestions li {
+    margin: 0 10px;
+}
+
+/* Style pour la liste des restaurants */
+#restaurant-list {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: table;
+    width: 100%;
+    text-align: center;
+}
+
+#restaurant-list tr {
+    display: table-row;
+}
+
+#restaurant-list li {
+    display: table-cell;
+    vertical-align: top;
+    padding: 10px;
+    width: 25%;
+}
+
+a {
+    color: #5e3f18;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+}
+
+#restaurant-list a.nomResto:hover {
+    color: #0099cc;
+    text-decoration: none;
+}
+
+.image-slider {
+    height: 200px;
+    margin-left: 317px;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+}
+
+.image-slider img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    margin: inherit;
+}
+
+.image-slider img.active {
+    opacity: 1;
+}
+
+
+
+#restaurant-list li.prix,
+#restaurant-list li.adresse,
+#restaurant-list li.description {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+/* Style pour le formulaire d'ajout de note */
+#restaurant-list label,
+#restaurant-list input[type="number"],
+#restaurant-list button {
+    display: block;
+    margin-top: 10px;
+}
+
+#restaurant-list input[type="number"] {
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: #111;
+    width: 60px;
+}
+
+#restaurant-list input[type="number"]:focus {
+    outline: none;
+    background-color: #e9ecef;
+}
+
+#restaurant-list button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0099cc;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#restaurant-list button:hover {
+    background-color: #0077b3;
+}
+
+
+input[type="number"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: #111;
+    width: 60px;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    background-color: #e9ecef;
+}
+
+label{
+    margin: 15px;
+}
+
+
+
+button {
+    background-color: #6e4a1c;
+    border-radius: 2px;
+    border: 2px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 8px;
+    padding: 5px;
+    width: 50px;
+    cursor: pointer;
+    margin-top: 12px;
+    margin-bottom: 20px;
+}
+
+span{
+    font-size: 20px;
+
+}
