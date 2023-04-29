@@ -2,9 +2,9 @@ body {
     background-color: beige;
     color: #5e3f18;
     font-family: "Andale Mono", sans-serif ;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+    padding: 1px;
+    /*! text-align: center; */
+
 }
 
 h1 {
@@ -15,11 +15,7 @@ h1 {
     font-weight: bold;
 }
 
-p {
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 18px;
-}
+
 
 ul#suggestions {
     margin-top: 0;
@@ -53,12 +49,13 @@ ul#suggestions li {
     width: 25%;
 }
 
-a {
+a{
     color: #5e3f18;
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
     border: none;
+
 }
 
 #restaurant-list a.nomResto:hover {
@@ -68,15 +65,18 @@ a {
 
 .image-slider {
     height: 200px;
-    margin-left: 317px;
+    margin: auto;
     overflow: hidden;
     position: relative;
     align-items: center;
+    width: 250px;
+    padding-top: 15px;
+    margin-top:7px;
 }
 
 .image-slider img {
-    height: 200px;
-    width: 200px;
+    height: 90%;
+    width: 90%;
     object-fit: cover;
     position: absolute;
     top: 0;
@@ -84,6 +84,7 @@ a {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     margin: inherit;
+    border: 1.5px double #6e4a1c;
 }
 
 .image-slider img.active {
@@ -157,8 +158,6 @@ label{
     margin: 15px;
 }
 
-
-
 button {
     background-color: #6e4a1c;
     border-radius: 2px;
@@ -169,11 +168,48 @@ button {
     padding: 5px;
     width: 50px;
     cursor: pointer;
-    margin-top: 12px;
     margin-bottom: 20px;
 }
 
 span{
-    font-size: 20px;
+    font-weight:bold;
 
 }
+
+li{
+    list-style-type: none;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.ajoutNote{
+    text-align: center;
+    margin: 5px;
+    height: 40px;
+}
+
+.note{
+    border: 2px double #6e4a1c;
+    padding:8px;
+    
+}
+
+.resto{
+    padding: 10px;
+    
+}
+
+.description{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+
+
+
+
+
+
+
+

@@ -19,9 +19,10 @@
 <h1>Liste des Restaurants à Lille</h1>
 <table id="restaurant-list">
 
-    <tr>
+    <tr >
+        <div class = 'resto'>
         <li>
-            <a href="https://www.bloempot.fr/" target="_blank" class ="nomResto">Le Bloempot</a>
+            <a href="https://www.bloempot.fr/" target="_blank" > <p class ="nomResto">Le Bloempot</p></a>
             <div class="image-slider">
                 <img src="images/Bloempot/Bloempot-0.jpg" alt="Image 1">
                 <img src="images/Bloempot/Bloempot-1.jpg" alt="Image 2">
@@ -30,18 +31,20 @@
                 <img src="images/Bloempot/Bloempot-4.jpg" alt="Image 5">
             </div>
         </li>
-        <li class = "prix">Moyenne de prix : €€€€</li>
-        <li class = "adresse">Adresse : 22 Rue des Bouchers, 59000 Lille</li>
+        <li class = "prix"> <span> Moyenne de prix : </span>€€€€</li>
+        <li class = "adresse"><span>Adresse :</span> 22 Rue des Bouchers 59000 Lille</li>
         <li class = "description">Le Bloempot est un restaurant étoilé au Michelin qui propose une cuisine créative et raffinée, mettant en valeur les produits locaux de saison. Le décor est moderne et élégant, avec une ambiance chaleureuse et conviviale.</li>
-        <li>
+        <li class = "ajoutNote">
             <label>
-                <input type="number" min="1" max="5" step="1">
+                <input type="number" min="1" max="5" step="1" value = "5">
             </label>
             <button onclick="ajouterNote()">Ajouter une note</button>
         </li>
+        </div>
     </tr>
     <tr>
-        <li><a href="https://www.vertmont.fr" target="_blank" class ="nomResto">L'Auberge du Vert Mont</a>
+        <div class = 'resto'>
+        <li><a href="https://www.vertmont.fr" target="_blank" ><p class ="nomResto">L'Auberge du Vert Mont</p></a>
             <div class="image-slider">
                 <img src="images/L_Auberge_du_Vert_Mont/L_Auberge_du_Vert_Mont-0.jpg" alt="Image 10">
                 <img src="images/L_Auberge_du_Vert_Mont/L_Auberge_du_Vert_Mont-1.jpg" alt="Image 20">
@@ -50,16 +53,17 @@
                 <img src="images/L_Auberge_du_Vert_Mont/L_Auberge_du_Vert_Mont-4.jpg" alt="Image 50">
             </div>
         </li>
-        <li class = "prix">Moyenne de prix : €€€€</li>
-        <li class = "adresse">Adresse : 1318 Rue du Mont Noir, 59299 Boeschepe</li>
+        <li class = "prix"><span> Moyenne de prix : </span>€€€€</li>
+        <li class = "adresse"><span>Adresse :</span> 1318 Rue du Mont Noir 59299 Boeschepe</li>
         <li class = "description">L'Auberge du Vert Mont est un restaurant étoilé au Michelin situé dans les collines verdoyantes à proximité de Lille. La cuisine est basée sur les produits du terroir, avec une approche contemporaine et créative. Le cadre est charmant, avec une vue panoramique sur la campagne environnante.
-        <li>
+        <li class = "ajoutNote">
             <label>
-                <input type="number" min="1" max="5" step="1">
+                <input type="number" min="1" max="5" step="1" value = "5">
             </label>
             <button onclick="ajouterNote()">Ajouter une note</button>
 
     </li>
+    </div>
     </tr>
 
 </table>

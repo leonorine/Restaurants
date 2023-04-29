@@ -7,14 +7,14 @@
         moyennePrix: "€€€€",
         adresse: "22 Rue des Bouchers, 59000 Lille",
         description: "Le Bloempot est un restaurant étoilé au Michelin qui propose une cuisine créative et raffinée, mettant en valeur les produits locaux de saison. Le décor est moderne et élégant, avec une ambiance chaleureuse et conviviale.",
-        notes: []
+        notes: ""
     },
     {
         nom: "L'Auberge du Vert Mont",
         moyennePrix: "€€€€",
         adresse: "1318 Rue du Mont Noir, 59299 Boeschepe",
         description: " L'Auberge du Vert Mont est un restaurant étoilé au Michelin situé dans les collines verdoyantes à proximité de Lille. La cuisine est basée sur les produits du terroir, avec une approche contemporaine et créative. Le cadre est charmant, avec une vue panoramique sur la campagne environnante.\n",
-        notes: []
+        notes: ""
     },
     // Ajouter d'autres restaurants avec leurs informations ici
     ];
@@ -82,12 +82,13 @@
  // Fonction pour ajouter une note
  function ajouterNote() {
      const noteElement = event.target.previousElementSibling.querySelector("input[type='number']");
-     const note = noteElement.value;
+     let note = noteElement.value;
      const restaurantElement = noteElement.closest("li");
 
 
      // Créer un nouvel élément pour afficher la note
      const noteDisplayElement = document.createElement("span");
+     noteDisplayElement.className = 'note';
      noteDisplayElement.textContent = `${note} ⭐️`;
      restaurantElement.appendChild(noteDisplayElement);
 
@@ -107,22 +108,23 @@
  // Charger les notes à partir du localStorage au chargement de la page
  // Charger les notes à partir du localStorage au chargement de la page
  window.addEventListener("load", function() {
-     console.log('wow');
      const notes = getStoredNotes();
-     const restaurantListElement = document.getElementById("restaurant-list");
-     const rows = restaurantListElement.getElementsByTagName("li");
-     for (let i = 1; i < rows.length; i++) {
-         const row = rows[i];
-         const restaurantName = row.cells[0].textContent;
+     const restaurants = document.querySelectorAll(".resto")
+     for (let i = 0; i < restaurants.length; i++) {
+         const restaurant_i = restaurants[i];
+         const restaurantName = restaurant_i.querySelector(".nomResto").textContent;
          const note = notes[restaurantName];
+         console.log(restaurantName);
+         console.log(note);
          if (note) {
              const noteDisplayElement = document.createElement("span");
+             noteDisplayElement.className = 'note';
              noteDisplayElement.textContent = `${note} ⭐️`;
-             row.cells[4].appendChild(noteDisplayElement);
+             restaurant_i.querySelector(".ajoutNote").appendChild(noteDisplayElement);
 
              // Cacher le bouton Ajouter et l'input de note
-             const addButton = row.querySelector("button");
-             const noteInput = row.querySelector("input[type='number']");
+             const addButton = restaurant_i.querySelector("button");
+             const noteInput = restaurant_i.querySelector("input[type='number']");
              addButton.style.display = "none";
              noteInput.style.display = "none";
 
@@ -132,53 +134,7 @@
  });
 
 
- function afficherRestaurants() {
-     const restaurantList = document.getElementById("restaurant-list");
-     restaurantList.innerHTML = ""; // Effacer le contenu existant
 
-     restaurants.forEach(function(restaurant, index) {
-         const restaurantElement = document.createElement("div");
-
-         // Afficher le nom du restaurant
-         const nameElement = document.createElement("h3");
-         nameElement.textContent = restaurant.nom;
-         restaurantElement.appendChild(nameElement);
-
-         // Afficher la description du restaurant
-         const descriptionElement = document.createElement("p");
-         descriptionElement.textContent = restaurant.description;
-         restaurantElement.appendChild(descriptionElement);
-
-         // Afficher la moyenne des prix du restaurant
-         const prixElement = document.createElement("p");
-         prixElement.textContent = "Moyenne des prix : " + restaurant.moyennePrix + "€";
-         restaurantElement.appendChild(prixElement);
-
-         // Créer un input pour la note
-         const noteElement = document.createElement("input");
-         noteElement.id = "note-" + index;
-         noteElement.placeholder = "Note sur 5";
-         noteElement.setAttribute("min", "0");
-         noteElement.setAttribute("max", "5");
-         noteElement.setAttribute("step", "1");
-         restaurantElement.appendChild(noteElement);
-
-         // Créer un bouton pour ajouter la note
-         const boutonElement = document.createElement("button");
-         boutonElement.textContent = "Ajouter Note";
-         boutonElement.addEventListener("click", function() {
-             const note = parseFloat(noteElement.value);
-             if (!isNaN(note)) {
-                 ajouterNote(index, note);
-                 afficherRestaurants();
-                 rechercherSuggestions(restaurant.notes, restaurant.description);
-             }
-         });
-         restaurantElement.appendChild(boutonElement);
-
-         restaurantList.appendChild(restaurantElement);
-     });
- }
 
  function afficherSuggestions() {
      const suggestionsContainer = document.getElementById("suggestions");
@@ -234,7 +190,6 @@
              if (!isNaN(note)) {
                  const index = parseInt(input.id.split("-")[1]);
                  ajouterNote(index, note);
-                 afficherRestaurants();
                  const notes = restaurants[index].notes;
                  const description = restaurants[index].description;
                  rechercherSuggestions(notes, description);
@@ -242,7 +197,7 @@
          }
      });
 
-     afficherRestaurants();
+
  }
 
 
