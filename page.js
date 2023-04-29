@@ -22,6 +22,7 @@
  let suggestions = [];
  // Fonction pour récupérer les notes stockées dans le localStorage
 
+ /*
  function getStoredNotes() {
      const storedNotes = localStorage.getItem("notes");
      if (storedNotes) {
@@ -35,6 +36,27 @@
  function storeNotes(notes) {
      localStorage.setItem("notes", JSON.stringify(notes));
  }
+  */
+
+ // Fonction pour récupérer les notes à partir du fichier JSON
+ async function getStoredNotes() {
+     const response = await fetch('data.json');
+     const data = await response.json();
+     return data.notes || {};
+ }
+
+ // Fonction pour enregistrer les notes dans le fichier JSON
+ async function storeNotes(notes) {
+     const response = await fetch('data.json');
+     const data = await response.json();
+     data.notes = notes;
+     const saveResponse = await fetch('data.json', {
+         method: 'PUT',
+         body: JSON.stringify(data)
+     });
+     return saveResponse.ok;
+ }
+
 
  document.addEventListener('DOMContentLoaded', function() {
      const sliders = document.querySelectorAll('.image-slider');
@@ -80,7 +102,7 @@
  });
 
  // Fonction pour ajouter une note
- function ajouterNote() {
+ async function ajouterNote() {
      const noteElement = event.target.previousElementSibling.querySelector("input[type='number']");
      let note = noteElement.value;
      const restaurantElement = noteElement.closest("li");
@@ -96,12 +118,11 @@
      event.target.style.display = "none";
      noteElement.style.display = "none";
 
-     // Enregistrer la note dans le localStorage
+     // Enregistrer la note dans data
      const restaurantName = restaurantElement.textContent;
-     const notes = getStoredNotes();
+     const notes = await getStoredNotes();
      notes[restaurantName] = note;
-     storeNotes(notes);
-
+     await storeNotes(notes);
 
  }
 
@@ -114,8 +135,6 @@
          const restaurant_i = restaurants[i];
          const restaurantName = restaurant_i.querySelector(".nomResto").textContent;
          const note = notes[restaurantName];
-         console.log(restaurantName);
-         console.log(note);
          if (note) {
              const noteDisplayElement = document.createElement("span");
              noteDisplayElement.className = 'note';
@@ -136,6 +155,8 @@
 
 
 
+
+/*
  function afficherSuggestions() {
      const suggestionsContainer = document.getElementById("suggestions");
      suggestionsContainer.innerHTML = "";
@@ -196,9 +217,10 @@
              }
          }
      });
+     }
 
+*/
 
- }
 
 
 
